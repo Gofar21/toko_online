@@ -8,5 +8,6 @@
 4 . jalankan php artisan db:seed (harus terkoneksi dengan internet soalnya mengambil data dari api raja ongkir) -->
 
 #hai teman2
-#install dialogflow
-composer require google/cloud-dialogflow
+#install dialogflow 
+<br>
+<p>composer require google/cloud-dialogflow</p>
