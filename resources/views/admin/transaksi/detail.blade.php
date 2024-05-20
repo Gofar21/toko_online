@@ -88,7 +88,12 @@
                         <tr>
                             <td>Bukti Pembayaran</td>
                             <td>:</td>
-                            <td  class="p-2"><img src="{{ asset('storage/'.$order->bukti_pembayaran) }}" alt="" srcset="" class="img-fluid" width="300"></td>
+                            <td  class="p-2">
+                              <button onclick="test()">
+
+                                <img src="{{ asset('storage/'.$order->bukti_pembayaran) }}" alt="" srcset="" class="img-fluid" width="300">
+                              </button>
+                            </td>
                         </tr>
                         @if($order->status_order_id == 2)
                         <tr>
@@ -109,9 +114,9 @@
                                 @csrf
                             <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" placeholder="Input Resi" aria-label="Recipient's username" aria-describedby="basic-addon2" name="no_resi" required>
-                                <div class="input-group-append">
-                                <button type="submit" class="btn btn-sm btn-primary" type="button">Simpan</button>
+                                <input type="text" class="form-control form-control-sm" placeholder="Input Resi" aria-label="Recipient's username" aria-describedby="basic-addon2" name="no_resi" value="{{ $order->no_resi }}" readonly required>
+                                <div class="input-group-append" >
+                                <button type="submit" class="btn btn-sm btn-primary" type="button">Kirim</button>
                                 </div>
                             </div>
                             </div>
@@ -152,5 +157,22 @@
               </div>
             </div>
           </div>
-          
 @endsection
+ <script>
+  function test(){
+      Swal.fire({
+      title: 'Bukti Pembayaran',
+      imageUrl: "{{ asset('storage/' . $order->bukti_pembayaran) }}",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Bukti Pembayaran',
+      showCancelButton: true,
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Batal'
+      }).then((result) => {
+          if (result.isConfirmed) {
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+          }
+      });
+  }
+  </script>         

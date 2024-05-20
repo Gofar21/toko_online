@@ -1,12 +1,19 @@
 @extends('user.app')
 @section('content')
-<div class="site-blocks-cover" style="background-image: url({{ asset('shopper') }}/images/hero_1.jpg);" data-aos="fade">
+
+<style>
+    .imgpromo{
+        max-width: 100px;
+        position:absolute;
+    }
+</style>
+<div class="site-blocks-cover" style="background-image: url({{ asset('shopper') }}/images/men1.jpg);" data-aos="fade">
     <div class="container">
     <div class="row align-items-start align-items-md-center justify-content-end">
         <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-        <h1 class="mb-2">Cari Kebutuhan Olahraga Kamu Di Sini</h1>
+        <h1 class="mb-2">Selamat Datang Di HM Konveksi</h1>
         <div class="intro-text text-center text-md-left">
-            <p class="mb-4">Alat olahraga disini terjamin kualitasnya dan tentunya barangnya juga original bukan kw. </p>
+            <p class="mb-4">Kepercayaan Pelanggan Nomor Satu </p>
             <p>
             <a href="{{ route('user.produk') }}" class="btn btn-sm btn-primary">Belanja Sekarang</a>
             </p>
@@ -64,6 +71,7 @@
             <div class="block-4 text-center">
                 <a href="{{ route('user.produk.detail',['id' =>  $produk->id]) }}">
                 <figure class="block-4-image">
+                <img src="{{ asset('shopper') }}/images/diskon.png " class="imgpromo">
                 <img src="{{ asset('storage/'.$produk->image) }}" alt="Image placeholder" class="img-fluid" width="100%" style="height:300px">
                 </figure>
                 </a>

@@ -47,8 +47,8 @@
                                 <td>{{ $order->name }}</td>
                                 <td align="center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                  <a href="{{ route('admin.transaksi.detail',['id'=>$order->id]) }}"  class="btn btn-warning btn-sm">
-                                    Input No Resi
+                                  <a href="{{ route('admin.transaksi.detail',['id'=>$order->id]) }}"  class="btn btn-success btn-sm">
+                                    Set Kirim
                                   </a>
                                 </div>
                                 </td>

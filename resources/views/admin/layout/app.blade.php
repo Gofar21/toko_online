@@ -26,7 +26,8 @@
 			<!-- partial:partials/_navbar.html -->
 			<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-					<a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('adminassets') }}/assets/images/logo.svg" alt="logo" /></a>
+					<H1>Logo</H1>
+					{{-- <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('adminassets') }}/assets/images/logo.svg" alt="logo" /></a> --}}
 					<a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('adminassets') }}/assets/images/logo-mini.svg" alt="logo" /></a>
 				</div>
 				<div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -131,7 +132,7 @@
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-shopping menu-icon"></i>
 							</a>
-							<div class="collapse" id="ui-basic2">
+							<div >
 								<ul class="nav flex-column sub-menu">
 								<li class="nav-item"> <a class="nav-link" href="{{ route('admin.pengaturan.alamat') }}"> Alamat</a></li>
 									<li class="nav-item"> <a class="nav-link" href="{{ route('admin.rekening') }}">No Rekening</a></li>
@@ -146,10 +147,10 @@
 					<!-- content-wrapper ends -->
 					<!-- partial:partials/_footer.html -->
 					<footer class="footer">
-						<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						{{-- <div class="d-sm-flex justify-content-center justify-content-sm-between">
 							<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
 							<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-						</div>
+						</div> --}}
 					</footer>
 					<!-- partial -->
 				</div>

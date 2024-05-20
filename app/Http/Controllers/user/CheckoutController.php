@@ -30,15 +30,19 @@ class CheckoutController extends Controller
             $berattotal += ( $item->weigth * $item->qty );
         }
 
+        
+
         //lalu ambil id kota si pelanngan
         $city_destination = Alamat::where('user_id', $id_user)->first()->cities_id;
+
+        
 
         //ambil id kota toko
         $alamat_toko = DB::table('alamat_toko')->first();
 
         //lalu hitung ongkirnya
         $cost = RajaOngkir::ongkosKirim([
-            'origin'        => $alamat_toko->id,
+            'origin'        => $alamat_toko->city_id,
             'destination'   => $city_destination,
             'weight'        => $berattotal,
             'courier'       => 'jne'

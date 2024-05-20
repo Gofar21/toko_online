@@ -107,8 +107,15 @@ class TransaksiController extends Controller
     public function konfirmasi(Order $id)
     {
         //function ini untuk mengkonfirmasi bahwa pelanngan sudah melakukan pembayaran
+        $prefix = 'HM';
+        $randomNumber1 = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); 
+        $randomNumber2 = str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT); 
+        $randomNumber3 = str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT); 
+        $randomCode = $prefix . $randomNumber1 . $randomNumber2 . $randomNumber3;
+        
         $id->update([
-            'status_order_id' => 3
+            'status_order_id' => 3,
+            'no_resi' => $randomCode
         ]);
 
         $order = Detailorder::where('order_id', $id)->get();
