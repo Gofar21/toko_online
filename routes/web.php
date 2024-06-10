@@ -12,7 +12,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BotManController;
 
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+Route::get('/dialogflow/{id}','BotManController@test');
+Route::get('/hallo/{id}','BotManController@hallo');
 Auth::routes();
 Route::get('/','user\WelcomeController@index')->name('home');
 Route::get('/home','user\WelcomeController@index')->name('home2');

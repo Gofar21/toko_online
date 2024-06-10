@@ -132,7 +132,17 @@
     </header>
 
     @yield('content')
-    
+    <script>
+      var botmanWidget = {
+          introMessage: "✋ Hi! I'm a chatbot",
+          chatServer: '/botman',
+          title: 'Chatbot Taek',
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js"></script>
+    <div id="botmanWidget">
+      
+    </div>
     <footer class="site-footer border-top">
       <div class="container">
         <div class="row">
@@ -198,7 +208,12 @@
         </div>
       </div>
     </footer>
+   
+
+
   </div>
+
+
 
   <script src="{{ asset('shopper') }}/js/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
@@ -210,6 +225,17 @@
   <script src="{{ asset('shopper') }}/js/aos.js"></script>
 
   <script src="{{ asset('shopper') }}/js/main.js"></script>
+</head>
+  {{-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="HM-bot"
+    agent-id="c7dd7d3c-95e2-4507-aed1-2c6e7acd1e1e"
+    language-code="en"
+  ></df-messenger> --}}
+
+ 
+
     @yield('js')
   </body>
 </html>
