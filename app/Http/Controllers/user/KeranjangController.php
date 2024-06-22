@@ -6,6 +6,7 @@ use App\Alamat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Keranjang;
+use App\Variant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -18,10 +19,13 @@ class KeranjangController extends Controller
         $id_user = Auth::user()->id;
         $keranjangs = Keranjang::join('users', 'users.id', '=', 'keranjang.user_id')
             ->join('products', 'products.id', '=', 'keranjang.products_id')
-            ->select('products.name as nama_produk', 'products.image', 'users.name', 'keranjang.*', 'products.price')
+            ->leftJoin('variants', 'variants.id', '=', 'keranjang.variant_id')
+            ->select('products.name as nama_produk', 'products.image', 'users.name', 'keranjang.*', 'products.price', 'variants.warna', 'variants.ukuran')
             ->where('keranjang.user_id', '=', $id_user)
             ->get();
 
+        // var_dump($keranjangs);
+        // die();
         $cekalamat = Alamat::where('user_id', $id_user)->count();
         $data = [
             'keranjangs' => $keranjangs,
@@ -35,7 +39,8 @@ class KeranjangController extends Controller
         Keranjang::create([
             'user_id' => $request->user_id,
             'products_id' => $request->products_id,
-            'qty' => $request->qty
+            'qty' => $request->qty,
+            'variant_id' => $request->variant_id
         ]);
 
         return redirect()->route('user.keranjang');

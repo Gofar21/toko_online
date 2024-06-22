@@ -21,6 +21,8 @@
                 <th class="product-price">Harga</th>
                 <th class="product-quantity">Jumlah</th>
                 <th class="product-total">Total</th>
+                <th class="product-total">ukuran</th>
+                <th class="product-total">warna</th>
                 <th class="product-remove">Hapus</th>
                 </tr>
             </thead>
@@ -53,6 +55,8 @@
                     $subtotal = $subtotal + $total;
                 ?>
                 <td>Rp. {{ number_format($total,2,',','.') }}</td>
+                <td>{{ $keranjang->ukuran }}</td>
+                <td>{{ $keranjang->warna }}</td>
                 <td><a href="{{ route('user.keranjang.delete',['id' => $keranjang->id]) }}" class="btn btn-primary btn-sm">X</a></td>
                 </tr>
                 <?php endforeach;?>
