@@ -19,6 +19,12 @@
 
     <link rel="stylesheet" href="{{ asset('shopper') }}/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+    <script>
+      function tanya(){
+        alert('fitur belum ada')
+      }
+    </script>
   </head>
   <body>
   
@@ -134,9 +140,9 @@
     @yield('content')
     <script>
       var botmanWidget = {
-          introMessage: "✋ Hi! I'm a chatbot",
+          introMessage: "Selamat datang di HM Konveksi😊<br>Ada yang bisa kami bantu?",
           chatServer: '/botman',
-          title: 'Chatbot Taek',
+          title: 'HM-Bot',
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js"></script>
@@ -146,7 +152,7 @@
     <footer class="site-footer border-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 mb-5 mb-lg-0">
+          {{-- <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-12">
                 <h3 class="footer-heading mb-4">Navigations</h3>
@@ -174,10 +180,10 @@
                 </ul>
               </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-6">
+          </div> --}}
+          <div class="col-md-12 col-lg-12">
             <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <h1 class="mb-4">Contact Info</h1>
               <ul class="list-unstyled">
                 <li class="address">Jalan sukses menuju dunia akhirat</li>
                 <li class="phone"><a href="tel://23923929210">+62 3392 3929 210</a></li>
@@ -234,8 +240,9 @@
     language-code="en"
   ></df-messenger> --}}
 
- 
+
 
     @yield('js')
   </body>
+    
 </html>
