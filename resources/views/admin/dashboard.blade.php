@@ -46,6 +46,14 @@
                 </div>
               </div>
             </div>
+            <div class="container mt-5">
+              <h2>Pertanyaan Terbanyak Sebulan</h2>
+              <canvas id="questionsChart"></canvas>
+            </div>
+            <div class="container mt-5">
+              <h2>Data Persentase</h2>
+              <canvas id="percentageChart"></canvas>
+          </div>
             <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card">
@@ -80,4 +88,89 @@
               </div>
             </div>
           </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById('questionsChart').getContext('2d');
+    var questionsCount = @json($questionsCount);
+    
+    var questions = [];
+    var counts = [];
+    
+    questionsCount.forEach(function(record) {
+        questions.push(record.text_input);
+        counts.push(record.count);
+    });
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: questions,
+            datasets: [{
+                label: 'Jumlah Pertanyaan',
+                data: counts,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+        var ctxPie = document.getElementById('percentageChart').getContext('2d');
+        var percentageData = @json($percentageData);
+
+        var labels = [];
+        var percentages = [];
+        
+        percentageData.forEach(function(record) {
+            labels.push(record.text_input);
+            percentages.push(record.percentage);
+        });
+
+        var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Persentase',
+                    data: percentages,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 159, 64, 0.8)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var label = pieChart.data.labels[tooltipItem.index];
+                                var value = pieChart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                return label + ': ' + value.toFixed(2) + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 @endsection

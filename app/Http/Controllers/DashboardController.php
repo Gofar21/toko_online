@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\User;
+use App\Pertanyaan;
+use Carbon\Carbon; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,12 +31,35 @@ class DashboardController extends Controller
             ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
             ->limit(10)
             ->get();
+        $questionsCount = Pertanyaan::select('text_input', DB::raw('count(*) as count'))
+            ->where('created_at', '>=', Carbon::now()->subMonth())
+            ->groupBy('text_input')
+            ->orderBy('count', 'DESC')
+            ->get();
+
+            $percentageData = Pertanyaan::select('text_input', DB::raw('count(*) as count'))
+            ->groupBy('text_input')
+            ->orderBy('count', 'DESC')
+            ->get();
+
+            // Hitung total semua pertanyaan
+            $totalPertanyaan = Pertanyaan::count();
+
+            // Hitung persentase untuk setiap kategori
+            $percentageData->transform(function ($item) use ($totalPertanyaan) {
+            $item->percentage = ($item->count / $totalPertanyaan) * 100;
+            return $item;
+            });
+        // echo $percentageData;
+        // die();
 
         return view('admin/dashboard', [
             'pendapatan' => $pendapatan,
             'transaksi'  => $transaksi,
             'pelanggan'  => $pelanggan,
-            'order_baru' => $order_terbaru
+            'order_baru' => $order_terbaru,
+            'questionsCount' => $questionsCount,
+            'percentageData' => $percentageData
         ]);
     }
 }
