@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Categories;
+use App\Variant;
 use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
@@ -18,7 +19,7 @@ class ProdukController extends Controller
             ->select(DB::raw('count(products.categories_id) as jumlah, categories.*'))
             ->groupBy('categories.id')
             ->get();
-
+        
         return view('user.produk', [
             'produks' => Product::paginate(9),
             'categories' => $kat
@@ -27,8 +28,12 @@ class ProdukController extends Controller
     public function detail($id)
     {
         //mengambil detail produk
+        $variant = Variant::where('produk_id', $id)->get();
+        // var_dump($variant);
+        // die();
         return view('user.produkdetail', [
-            'produk' => Product::findOrFail($id)
+            'produk' => Product::findOrFail($id),
+            'variants' => $variant
         ]);
     }
 

@@ -134,6 +134,8 @@
                             <th width="5%">No</th>
                             <th>Nama Produk</th>
                             <th>QTY</th>
+                            <th>Ukuran</th>
+                            <th>Warna</th>
                             <th>Total Harga</th>
                           </tr>
                         </thead>
@@ -144,6 +146,8 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $dt->nama_produk }}</td>
                                 <td>{{ $dt->qty }}</td>
+                                <td>{{ $dt->ukuran }}</td>
+                                <td>{{ $dt->warna }}</td>
                                 <td>{{ $dt->qty * $dt->price }}</td>
                             </tr>
                             @endforeach
