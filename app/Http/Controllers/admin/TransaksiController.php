@@ -28,7 +28,8 @@ class TransaksiController extends Controller
         //ambil data detail order sesuai id
         $detail_order = Detailorder::join('products', 'products.id', '=', 'detail_order.product_id')
             ->join('order', 'order.id', '=', 'detail_order.order_id')
-            ->select('products.name as nama_produk', 'products.image', 'detail_order.*', 'products.price', 'order.*')
+            ->leftJoin('variants', 'variants.id', '=', 'detail_order.variant_id')
+            ->select('products.name as nama_produk', 'products.image', 'detail_order.*', 'products.price', 'order.*', 'variants.warna', 'variants.ukuran')
             ->where('detail_order.order_id', $id)
             ->get();
 
