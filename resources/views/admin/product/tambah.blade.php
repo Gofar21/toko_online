@@ -62,6 +62,33 @@
 											<textarea name="description" id="" cols="30" rows="10" class="form-control" required>
 												</textarea>
 										</div>
+										<br>
+										<div id="formContainer">
+											<div class="variant">
+												<div class="row mb-2">
+													<div class="col-6">
+														<label for="variant">Variant</label>
+													</div>
+													<div class="col-6 text-right">
+														<button type="button" class="btn btn-primary" id="tambahVariant">Tambah</button>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-4">
+														<label for="ukuran">Ukuran</label>
+														<input type="text" id="ukuran" class="form-control" name="ukuran[]">
+													</div>
+													<div class="col-4">
+														<label for="warna">Warna</label>
+														<input type="text" id="warna" class="form-control" name="warna[]">
+													</div>
+													<div class="col-4">
+														<label for="gambarVariant">Gambar</label>
+														<input type="file" id="gambarVariant" class="form-control" name="gambarVariant[]">
+													</div>
+												</div>
+											</div>
+										</div>
 										<div class="text-right">
 											<button type="submit" class="bg-success btn btn-success text-right">Simpan</button>
 										</div>
@@ -94,5 +121,41 @@
 			}
 		}
 	}
+	document.getElementById('tambahVariant').addEventListener('click', function() {
+            var formContainer = document.getElementById('formContainer');
+            var newForm = document.createElement('div');
+            newForm.classList.add('variant');
+            newForm.innerHTML = `
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label for="variant">Variant</label>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button type="button" class="btn btn-danger removeVariant">Hapus</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="ukuran">Ukuran</label>
+                        <input type="text" class="form-control" name="ukuran[]">
+                    </div>
+                    <div class="col-4">
+                        <label for="warna">Warna</label>
+                        <input type="text" class="form-control" name="warna[]">
+                    </div>
+                    <div class="col-4">
+                        <label for="gambarVariant">Gambar</label>
+                        <input type="file" class="form-control" name="gambarVariant[]">
+                    </div>
+                </div>
+            `;
+            formContainer.appendChild(newForm);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('removeVariant')) {
+                e.target.closest('.variant').remove();
+            }
+        });
 </script>
 @endsection

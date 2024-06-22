@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Categories;
+use App\Variant;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -35,7 +36,7 @@ class ProductController extends Controller
             //simpan foto produk yang di upload ke direkteri public/storage/imageproduct
             $file = $request->file('image')->store('imageproduct', 'public');
 
-            Product::create([
+            $product = Product::create([
                 'name'          => $request->name,
                 'description'   => $request->description,
                 'price'         => $request->price,
@@ -45,6 +46,23 @@ class ProductController extends Controller
                 'image'         => $file
 
             ]);
+
+            if ($request->has('ukuran') && $request->has('warna')) {
+                // echo "ada variant";
+                foreach ($request->ukuran as $index => $ukuran) {
+                    // echo 'ukuran'.$ukuran;
+                    // echo '<br>';
+                    // echo 'warnanya:' .$request->warna[$index];
+                    $variant = new Variant();
+                    $variant->produk_id = $product->id;
+                    $variant->ukuran = $ukuran;
+                    $variant->warna = $request->warna[$index];
+                    if (isset($request->gambarVariant[$index])) {
+                        $variant->gambar = $request->gambarVariant[$index]->store('variants', 'public');
+                    }
+                    $variant->save();
+                }
+            }
 
             return redirect()->route('admin.product')->with('status', 'Berhasil Menambah Produk Baru');
         }
