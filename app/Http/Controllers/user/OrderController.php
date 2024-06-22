@@ -50,7 +50,8 @@ class OrderController extends Controller
         //function menampilkan detail order
         $detail_order = Detailorder::join('products', 'products.id', '=', 'detail_order.product_id')
             ->join('order', 'order.id', '=', 'detail_order.order_id')
-            ->select('products.name as nama_produk', 'products.image', 'detail_order.*', 'products.price', 'order.*')
+            ->leftJoin('variants', 'variants.id', '=', 'detail_order.variant_id')
+            ->select('products.name as nama_produk', 'products.image', 'detail_order.*', 'products.price', 'order.*', 'variants.warna', 'variants.ukuran')
             ->where('detail_order.order_id', $id)
             ->get();
         $order = Order::join('users', 'users.id', '=', 'order.user_id')
@@ -157,6 +158,7 @@ class OrderController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $brg->products_id,
                     'qty' => $brg->qty,
+                    'variant_id' => $brg->variant_id
                 ]);
             }
             //lalu hapus data produk pada keranjang pembeli

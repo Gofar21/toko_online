@@ -70,6 +70,8 @@
                             <th class="product-thumbnail">Gambar</th>
                             <th class="product-name">Nama Produk</th>
                             <th class="product-price">Jumlah</th>
+                            <th class="product-price">Ukuran</th>
+                            <th class="product-price">Warna</th>
                             <th class="product-quantity" width="20%">Total</th>
                             </tr>
                         </thead>
@@ -79,6 +81,8 @@
                                 <td><img src="{{ asset('storage/'.$o->image) }}" alt="" srcset="" width="50"></td>
                                 <td>{{ $o->nama_produk }}</td>
                                 <td>{{ $o->qty }}</td>
+                                <td>{{ $o->ukuran }}</td>
+                                <td>{{ $o->warna }}</td>
                                 <td>{{ $o->qty * $o->price }}</td>
                             </tr>
                             @endforeach
