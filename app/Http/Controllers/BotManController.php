@@ -12,6 +12,8 @@ use BotMan\BotMan\Cache\LaravelCache;
 use Google\Cloud\Dialogflow\V2\SessionsClient;
 use Google\Cloud\Dialogflow\V2\QueryInput;
 use Google\Cloud\Dialogflow\V2\TextInput;
+use App\Pertanyaan;
+use Illuminate\Support\Facades\Auth;
 
 class BotManController extends Controller
 {
@@ -24,20 +26,11 @@ class BotManController extends Controller
 
         // Menangkap semua input pengguna
         $botman->hears('{message}', function (BotMan $bot, $message) {
-            // $response = $this->test($message);
-            // $res = json_encode($response, JSON_PRETTY_PRINT);
-
-            // $response =  $this->test($message);
-            // $data = json_encode($response);
-            // $test = json_decode($data);
-
-            // $jawaban = $test->fulfillmentText;
-            // $c = json_decode($jawaban);
-
-            // echo json_encode($test);
-            // echo $test->queryText;
+           
             $response = $this->test($message);
 
+            $pesanUser = $message;
+            $id_user = Auth::user()->id;
             // Mengambil string JSON dari fulfillmentText
             $fulfillmentText = $response['fulfillmentText'];
 
@@ -57,16 +50,36 @@ class BotManController extends Controller
                         if (isset($content[1]['options'])) {
                             foreach ($content[1]['options'] as $option) {
                                 // echo $option['text'];
-                                $bot->reply($option['text']);
+                                $bot->reply(
+                                    '<button onclick="tanya()">
+                                    '.$option['text'].'
+                                    </button>'
+                                );
                             }
                         }
                     }
+
+                    $textPayload = json_encode($fulfillmentMessages);
+                    $textInputInsert = json_encode($message); // Mengubah message menjadi JSON string jika perlu
+
+                // Debugging: Log atau tampilkan data yang akan disisipkan
+                // \Log::info('Fulfillment Messages: ' . json_encode($fulfillmentMessages));
+                // \Log::info('Message: ' . $message);
+
+                Pertanyaan::create([
+                    'text_payload' => $textPayload,
+                    'label_type' => 'produk',
+                    'text_input' => $pesanUser,
+                    'user_id' => $id_user
+                ]);
                 }
             }
             
+            // $textInputInsert = $message;
 
             // $bot->reply('hi');
         });
+    
 
         $botman->listen();
     }

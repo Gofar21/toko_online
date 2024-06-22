@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BotManController;
 
-Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
-Route::get('/dialogflow/{id}','BotManController@test');
-Route::get('/hallo/{id}','BotManController@hallo');
+
 Auth::routes();
 Route::get('/','user\WelcomeController@index')->name('home');
 Route::get('/home','user\WelcomeController@index')->name('home2');
@@ -91,6 +89,10 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
     Route::get('/order/pesanandibatalkan/{id}','user\OrderController@pesanandibatalkan')->name('user.order.pesanandibatalkan');
     Route::get('/order/pembayaran/{id}','user\OrderController@pembayaran')->name('user.order.pembayaran');
     Route::post('/order/kirimbukti/{id}','user\OrderController@kirimbukti')->name('user.order.kirimbukti');
+
+    Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+Route::get('/dialogflow/{id}','BotManController@test');
+Route::get('/hallo/{id}','BotManController@hallo');
 });
 
 Route::get('/ongkir', 'OngkirController@index');
