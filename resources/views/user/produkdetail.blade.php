@@ -12,7 +12,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-6">
-        <img src="{{ asset('storage/'.$produk->image) }}" alt="Image" class="img-fluid">
+        <img  id="mainImage" src="{{ asset('storage/'.$produk->image) }}" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6">
         <h2 class="text-black">{{ $produk->name }}</h2>
@@ -41,6 +41,24 @@
             </div>
         </div>
 
+        <div class="row">
+            @foreach($variants as $variant)
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="javascript:void(0);" onclick="gantiGambar('{{ asset('storage/' . $variant->gambar) }}', this, {{ $variant->id }})" class="pointer-cursor">
+                            <p>Ukuran: {{ $variant->ukuran }}</p>
+                            <p>Warna: {{ $variant->warna }}</p>
+                            @if($variant->gambar)
+                            {{-- <img src="{{ asset('storage/' . $variant->gambar) }}" alt="Variant Image" class="img-fluid"> --}}
+                            @endif
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <input type="hidden" id="idVariant" name="variant_id" value="">
         </div>
         <p><button type="submit" class="buy-now btn btn-sm btn-primary">Add To Cart</button></p>
         </form>
@@ -48,4 +66,26 @@
     </div>
     </div>
 </div>
+
+<script>
+    function gantiGambar(gambar, el, id){
+        document.getElementById('mainImage').src = gambar;
+        
+        // Remove active class from all variants
+        var variants = document.querySelectorAll('.variant-active');
+        variants.forEach(function(variant) {
+            variant.classList.remove('variant-active');
+        });
+
+        // Add active class to clicked variant
+        el.closest('.card-body').classList.add('variant-active');
+        document.getElementById('idVariant').value = id;
+    }
+</script>
+
+<style>
+    .variant-active {
+        border: 2px solid #007bff;
+    }
+</style>
 @endsection
