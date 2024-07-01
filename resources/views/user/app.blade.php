@@ -20,6 +20,17 @@
     <link rel="stylesheet" href="{{ asset('shopper') }}/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
+    <style>
+      .logo{
+        width: 30%;
+      }
+
+      @media (max-width: 767px) {
+        .logo{
+          width: 10%;
+        }
+      }
+    </style>
     <script>
       function tanya(){
         alert('fitur belum ada')
@@ -43,8 +54,10 @@
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-              <div class="site-logo">
-                <a href="{{ route('home') }}" class="js-logo-clone">Logo Shop</a>
+              <div class="">
+                <a href="{{ route('home') }}" class="js-logo-clone">
+                  <img class="logo" src="{{ asset('shopper') }}/images/logo.png">
+                </a>
               </div>
             </div>
 

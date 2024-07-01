@@ -45,6 +45,14 @@
                         </td>
                       </tr>
                       <tr>
+                        <td>
+                            Jasa Kirim
+                        </td>
+                        <td style="text-transform: uppercase;">
+                            {{ $jasa_kirim }}
+                        </td>
+                    </tr>
+                      <tr>
                         <td class="text-black font-weight-bold"><strong>Jumlah Pembayaran</strong></td>
                         <td class="text-black font-weight-bold">
                         <?php $alltotal = $subtotal + $ongkir; ?>  
@@ -91,4 +99,10 @@
         <!-- </form> -->
       </div>
     </div>
+
+    <script>
+      function test(){
+        alert('jasdkahgd')
+      }
+    </script>
 @endsection

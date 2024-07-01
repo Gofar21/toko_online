@@ -10,10 +10,11 @@ class KategoriController extends Controller
 {
     public function produkByKategori($id)
     {
-       //menampilkan data sesua kategori yang diminta user
+       $produk = Product::where('categories_id',$id)->paginate(5);
+       $categories = Categories::where('id', $id)->get();
         return view('user.kategori', [
-            'produks' => Product::where('categories_id',$id)->paginate(5),
-            'categories' => Categories::all()
+            'produks' => $produk,
+            'categories' => $categories
         ]);
     }
 }

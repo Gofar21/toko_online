@@ -80,7 +80,9 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
     Route::post('/alamat/simpan','user\AlamatController@simpan')->name('user.alamat.simpan');
     Route::post('/alamat/update/{id}','user\AlamatController@update')->name('user.alamat.update');
     Route::get('/alamat/ubah/{id}','user\AlamatController@ubah')->name('user.alamat.ubah');
-    Route::get('/checkout','user\CheckoutController@index')->name('user.checkout');
+    Route::get('/checkout/{jasa_kirim}','user\CheckoutController@index')->name('user.checkout');
+    Route::get('/set-alamat','user\CheckoutController@set_alamat')->name('user.set_alamat');
+    Route::get('/set-alamat/{id}','user\CheckoutController@set_alamat_utama')->name('user.set_alamat_utama');
     Route::post('/order/simpan','user\OrderController@simpan')->name('user.order.simpan');
     Route::get('/order/sukses','user\OrderController@sukses')->name('user.order.sukses');
     Route::get('/order','user\OrderController@index')->name('user.order');

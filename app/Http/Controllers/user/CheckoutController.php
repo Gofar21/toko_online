@@ -12,7 +12,7 @@ use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function index($jasa_kirim = 'jne')
     {
         //ambil session user id
         $id_user = Auth::user()->id;
@@ -33,7 +33,14 @@ class CheckoutController extends Controller
         
 
         //lalu ambil id kota si pelanngan
-        $city_destination = Alamat::where('user_id', $id_user)->first()->cities_id;
+        $city_destination = Alamat::where('is_utama', 1)->first()->cities_id;
+        
+        $alamat_pembeli = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
+        ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
+        ->select('alamat.*', 'cities.title as kota', 'provinces.title as provinsi')
+        ->where('alamat.user_id', $id_user)->get();
+        // var_dump($alamat_pembeli);
+        // die();
 
         
 
@@ -45,7 +52,7 @@ class CheckoutController extends Controller
             'origin'        => $alamat_toko->city_id,
             'destination'   => $city_destination,
             'weight'        => $berattotal,
-            'courier'       => 'jne'
+            'courier'       => $jasa_kirim
         ])
         ->get();
 
@@ -57,6 +64,7 @@ class CheckoutController extends Controller
             ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
             ->select('alamat.*', 'cities.title as kota', 'provinces.title as prov')
             ->where('alamat.user_id', $id_user)
+            ->where('alamat.is_utama', 1)
             ->first();
 
         //buat kode invoice sesua tanggalbulantahun dan jam
@@ -64,7 +72,41 @@ class CheckoutController extends Controller
             'invoice' => 'ALV' . Date('Ymdhi'),
             'keranjangs' => $carts,
             'ongkir' => $ongkir,
-            'alamat' => $alamat_user
+            'alamat' => $alamat_user,
+            'jasa_kirim' => $jasa_kirim,
+            'alamat_pembeli' => $alamat_pembeli
         ]);
+    }
+
+    public function set_alamat()
+    {
+        $id_user = Auth::user()->id;
+        $alamat_pembeli = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
+        ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
+        ->select('alamat.*', 'cities.title as kota', 'provinces.title as provinsi')
+        ->where('alamat.user_id', $id_user)->get();
+
+        $alamatSelect = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
+            ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
+            ->select('alamat.*', 'cities.title as kota', 'provinces.title as prov')
+            ->where('alamat.user_id', $id_user)
+            ->where('alamat.is_utama', 1)
+            ->first();
+        
+        return view('user.set_alamat',[
+            'alamat_pembeli' => $alamat_pembeli,
+            'alamatSelect' => $alamatSelect
+        ]);
+    }
+
+    public function set_alamat_utama($id)
+    {
+        $id_user = Auth::user()->id;
+
+        Alamat::where('user_id', $id_user)->update(['is_utama' => 0]);
+
+        Alamat::where('id', $id)->where('user_id', $id_user)->update(['is_utama' => 1]);
+
+        return redirect()->back()->with('status', 'Alamat utama telah diubah.');
     }
 }

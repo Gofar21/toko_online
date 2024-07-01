@@ -94,7 +94,7 @@
             <div class="row">
                 @if($cekalamat > 0)
                 <div class="col-md-12">
-                <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block" >Checkout</a>
+                <a href="{{ route('user.set_alamat') }}" class="btn btn-primary btn-lg py-3 btn-block" >Checkout</a>
                 <small>Jika Merubah Quantity Pada Keranjang Maka Klik Update Keranjang Dulu Sebelum Melakukan Checkout</small>
                 </div>
                 @else

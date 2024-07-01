@@ -44,10 +44,10 @@ class DialogflowApi extends Controller
     
         $sessionsClient->close();
     
-        return [
-            'queryText' => $queryResult->getQueryText(),
-            'fulfillmentText' => $queryResult->getFulfillmentText(),
-            'intent' => $queryResult->getIntent()->getDisplayName()
-        ];
+        // return [
+        //     'queryText' => $queryResult->getQueryText(),
+        //     'fulfillmentText' => $queryResult->getFulfillmentText(),
+        //     'intent' => $queryResult->getIntent()->getDisplayName()
+        // ];
     }
 }
