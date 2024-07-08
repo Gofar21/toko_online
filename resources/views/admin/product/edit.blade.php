@@ -43,6 +43,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                  <label for="exampleFormControlSelect2">Label Promo</label>
+                                  <select class="form-control" name="promo" id="exampleFormControlSelect2">
+                                      <option value="1" <?php if ($product->promo == 1) echo 'selected'; ?>>Promo</option>
+                                      <option value="0" <?php if ($product->promo == 0 || $product->promo === null) echo 'selected'; ?>>Tidak Promo</option>
+                                  </select>
+                              </div>
+                                <div class="form-group">
                                 <label for="exampleInputUsername1">Berat (gram)</label>
                                 <input required type="number" class="form-control" name="weigth" value="{{ $product->weigth}}">
                                 </div>

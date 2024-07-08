@@ -42,6 +42,8 @@ class BotManController extends Controller
 
             $options = [];
 
+            $isPayloadProcessed = false;
+
             foreach ($fulfillmentMessages as $message) {
                 if (isset($message['payload']) && isset($message['payload']['richContent'])) {
                     // var_dump($message['payload']);
@@ -51,7 +53,7 @@ class BotManController extends Controller
                             foreach ($content[1]['options'] as $option) {
                                 // echo $option['text'];
                                 $bot->reply(
-                                    '<button onclick="tanya()">
+                                    '<button type="button" onclick="window.tanya()" id="tanya">
                                     '.$option['text'].'
                                     </button>'
                                 );
@@ -72,12 +74,45 @@ class BotManController extends Controller
                     'text_input' => $pesanUser,
                     'user_id' => $id_user
                 ]);
+
+                $isPayloadProcessed = true;
+
+                }
+
+
+            }
+
+            if (!$isPayloadProcessed) {
+                foreach ($fulfillmentMessages as $message) {
+                    if (isset($message['text']['text'][0])) {
+                        $bot->reply($message['text']['text'][0]);
+    
+                        Pertanyaan::create([
+                            'text_payload' => null,
+                            'label_type' => 'produk',
+                            'text_input' => $pesanUser,
+                            'user_id' => $id_user
+                        ]);
+    
+                        $isPayloadProcessed = true;
+                        break;
+                    }
                 }
             }
-            
-            // $textInputInsert = $message;
 
-            // $bot->reply('hi');
+            if (!$isPayloadProcessed && isset($data['fulfillmentText'])) {
+                $bot->reply($data['fulfillmentText']);
+    
+                Pertanyaan::create([
+                    'text_payload' => null,
+                    'label_type' => 'produk',
+                    'text_input' => $pesanUser,
+                    'user_id' => $id_user
+                ]);
+            }
+    
+            
+            
         });
     
 
@@ -87,7 +122,7 @@ class BotManController extends Controller
     public function test($input)
     {
         $credentialsPath = base_path('dialogflow-key.json');
-        $projectId = 'hm-bot-mawi';
+        $projectId  = 'hm-bot-mawi';
         $sessionId = '123456789';
         $text = $input;
 

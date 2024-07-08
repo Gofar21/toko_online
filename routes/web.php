@@ -13,6 +13,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\DialogflowController;
 
 
 Auth::routes();
@@ -96,6 +97,8 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
 Route::get('/dialogflow/{id}','BotManController@test');
 Route::get('/hallo/{id}','BotManController@hallo');
 });
+
+Route::post('/dialogflow', [DialogflowController::class, 'handle']);
 
 Route::get('/ongkir', 'OngkirController@index');
 Route::get('/ongkir/province/{id}/cities', 'OngkirController@getCities');

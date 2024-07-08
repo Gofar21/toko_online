@@ -96,6 +96,7 @@ class ProductController extends Controller
         $prod->weigth = $request->weigth;
         $prod->categories_id = $request->categories_id;
         $prod->stok = $request->stok;
+        $prod->promo = $request->promo;
 
 
         $prod->save();

@@ -1,0 +1,53 @@
+{
+    "queryText": "produk",
+    "languageCode": "en",
+    "parameters": {},
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    ""
+                ]
+            }
+        },
+        {
+            "payload": {
+                "richContent": [
+                    [
+                        {
+                            "title": "Hallo kak, berikut ini produk kami : ",
+                            "type": "description"
+                        },
+                        {
+                            "type": "chips",
+                            "title": "Pilih opsi dibawah ini : ",
+                            "options": [
+                                {
+                                    "text": "1. Celana Chinos"
+                                },
+                                {
+                                    "text": "2. Celana Mizuno"
+                                },
+                                {
+                                    "text": "3. Celana baby terry"
+                                },
+                                {
+                                    "text": "4. Celana Tartan"
+                                },
+                                {
+                                    "text": "5. Celana Tartan Panjang"
+                                }
+                            ]
+                        }
+                    ]
+                ]
+            }
+        }
+    ],
+    "intent": {
+        "name": "projects/hm-bot-mawi/agent/intents/d464b545-f73c-4910-84ec-4cf0e90187fc",
+        "displayName": "produk"
+    },
+    "intentDetectionConfidence": 1
+}

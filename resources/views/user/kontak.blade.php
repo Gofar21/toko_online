@@ -35,8 +35,9 @@
         <h2 class="h3 mb-3 text-black">Tentang Kami</h2>
         </div>
         <div class="col-md-7 border-shadow" style="border: 1px solid rgb(255, 255, 255); ">
-            <h4 class="text-black mt-2">ksjhgfgsuoihisodhhjbjhigsdwywhwdgfsdugfhsduyh</h4>
-            <h5 class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia aperiam perspiciatis quisquam adipisci fuga. Nemo cumque quis asperiores praesentium cupiditate neque, quasi sequi incidunt minus sit. Ipsam, voluptatem. Labore, ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis sit est voluptates deserunt iure quas quos, reiciendis quo exercitationem ipsum, totam soluta labore alias aspernatur perspiciatis molestiae. Unde, magnam fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nobis aliquam quis! Necessitatibus error accusamus esse voluptatem odit libero laborum. Nesciunt magnam reprehenderit harum qui laborum maiores? Recusandae, ex ratione! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod natus dolorem reiciendis ab aspernatur aut tempore dignissimos enim odit, laudantium quas error repellendus voluptas accusantium expedita asperiores! Possimus, unde voluptatem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque esse rem quam magni ad doloremque eveniet. Nihil explicabo odit cupiditate sint, sit perspiciatis dolores perferendis, distinctio suscipit blanditiis natus commodi? Lor  em ipsum dolor sit amet consectetur adipisicing elit. Dignissimos facere impedit eligendi blanditiis voluptates assumenda enim excepturi libero maxime ad! Harum id amet quos consequatur sapiente doloribus, dolorum sit maxime. lo    </h5>
+            <h4 class="text-black mt-2">HM Konveksi</h4>
+            <h5 class="text-black">Merupakan usaha konveksi rumahan prmbuatan celana kekinian dengan beragam motif dan warna. Produk yang kami buat selalu mengedepankan kualitas dengan didukung SDM yang profesional dan ahli dibidangnya.
+            </h5>
 
         
         </div>

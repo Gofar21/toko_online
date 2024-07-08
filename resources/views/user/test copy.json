@@ -1,0 +1,24 @@
+{
+    "queryText": "order",
+    "languageCode": "en",
+    "parameters": {},
+    "allRequiredParamsPresent": true,
+    "fulfillmentText": "untuk pemesanan bisa klik link berikut",
+    "fulfillmentMessages": [
+        {
+            "text": {
+                "text": [
+                    "untuk pemesanan bisa klik link berikut"
+                ]
+            }
+        },
+        {
+            "payload": {}
+        }
+    ],
+    "intent": {
+        "name": "projects/hm-bot-mawi/agent/intents/638f509c-8a38-4c97-a93c-9c4544e2ebaa",
+        "displayName": "pemesanan"
+    },
+    "intentDetectionConfidence": 1
+}

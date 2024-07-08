@@ -46,6 +46,13 @@
 											</select>
 										</div>
 										<div class="form-group">
+											<label for="exampleFormControlSelect2">Label Promo</label>
+											<select class="form-control" name="promo" id="exampleFormControlSelect2">
+												<option value="1">Promo</option>
+												<option value="0">Tidak Promo</option>
+											</select>
+										</div>
+										<div class="form-group">
 											<label for="exampleInputUsername1">Berat (gram)</label>
 											<input required type="number" class="form-control" name="weigth">
 										</div>
