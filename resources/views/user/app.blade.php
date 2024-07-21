@@ -132,6 +132,41 @@
       #jawabanButton:focus {
           outline: none; /* Hilangkan outline default saat fokus */
       }
+
+      .dots-loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20px;
+      }
+
+      .dots-loader div {
+        width: 6px;
+        height: 6px;
+        margin: 0 2px;
+        background-color: #3498db;
+        border-radius: 50%;
+        display: inline-block;
+        animation: dotsLoader 1.4s infinite both;
+      }
+
+      .dots-loader div:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+
+      .dots-loader div:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+
+      @keyframes dotsLoader {
+        0%, 80%, 100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+
     </style>
       
   </head>
@@ -264,7 +299,19 @@
             <span>Chat with Us</span>
             <button onclick="toggleChat()" style="background: transparent; border: none; color: #fff; font-size: 18px;">X</button>
           </div>
-          <div id="chat-body"></div>
+          <div id="chat-body">
+            <div class="message bot">
+              Selamat datang di chat kami! Silakan pilih salah satu tombol di bawah ini untuk memulai.
+              <br>
+              <button id="jawabanButton" class="jawabanButton" onclick="tanya('produk')">Produk</button>
+              <button id="jawabanButton" class="jawabanButton" onclick="tanya('promo')">Promo</button>
+            </div>
+          </div>
+          <div id="chat-loader" class="dots-loader" style="display:none;">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>  
           <div id="chat-footer">
             <input type="text" id="chat-input" placeholder="Type your message...">
             <button id="send-button" onclick="sendMessage()">Send</button>
@@ -316,16 +363,6 @@
               
             </div>
           </div>
-          <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-              <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-            </div>
-            
-          </div>
         </div>
       </footer>
     
@@ -369,58 +406,33 @@
     </script> --}}
     <script>
       function toggleChat() {
-            const widget = document.getElementById('chat-widget');
-            const chatButton = document.getElementById('chat-button');
-            if (widget.style.display === 'none' || widget.style.display === '') {
-                widget.style.display = 'flex';
-                chatButton.style.display = 'none'; // Hide the chat button
-            } else {
-                widget.style.display = 'none';
-                chatButton.style.display = 'inline-block'; // Show the chat button
-            }
+        const widget = document.getElementById('chat-widget');
+        const chatButton = document.getElementById('chat-button');
+        if (widget.style.display === 'none' || widget.style.display === '') {
+            widget.style.display = 'flex';
+            chatButton.style.display = 'none'; // Hide the chat button
+        } else {
+            widget.style.display = 'none';
+            chatButton.style.display = 'inline-block'; // Show the chat button
         }
+    }
 
-        function sendMessage() {
-            const messageInput = document.getElementById('chat-input');
-            const chatBody = document.getElementById('chat-body');
-            const message = messageInput.value.trim();
-            if (message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message user';
-                messageDiv.textContent = message;
-                chatBody.appendChild(messageDiv);
-                messageInput.value = '';
-
-                // Kirim pesan ke server
-                fetch('/dialogflow', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: JSON.stringify({ message: message })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    const responseDiv = document.createElement('div');
-                    responseDiv.className = 'message bot';
-                    responseDiv.innerHTML = data.message; // Menampilkan teks HTML dari server
-                    chatBody.appendChild(responseDiv);
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                })
-                .catch(error => console.error('Error:', error));
-            }
-        }
-
-        function tanya(pesan) {
-            const message = pesan;
-            const chatBody = document.getElementById('chat-body');
+    function sendMessage() {
+        const messageInput = document.getElementById('chat-input');
+        const chatBody = document.getElementById('chat-body');
+        const loader = document.getElementById('chat-loader');
+        const message = messageInput.value.trim();
+        if (message) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message user';
             messageDiv.textContent = message;
             chatBody.appendChild(messageDiv);
+            messageInput.value = '';
 
+            // Tampilkan loader
+            loader.style.display = 'block';
+
+            // Kirim pesan ke server
             fetch('/dialogflow', {
                 method: 'POST',
                 headers: {
@@ -437,16 +449,65 @@
                 responseDiv.innerHTML = data.message; // Menampilkan teks HTML dari server
                 chatBody.appendChild(responseDiv);
                 chatBody.scrollTop = chatBody.scrollHeight;
-            })
-            .catch(error => console.error('Error:', error));
-        }
 
-        document.getElementById('chat-input').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                sendMessage();
-            }
+                // Sembunyikan loader
+                loader.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+                // Sembunyikan loader
+                loader.style.display = 'none';
+            });
+        }
+    }
+
+    function tanya(pesan) {
+        const message = pesan;
+        const chatBody = document.getElementById('chat-body');
+        const loader = document.getElementById('chat-loader');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message user';
+        messageDiv.textContent = message;
+        chatBody.appendChild(messageDiv);
+
+        // Tampilkan loader
+        loader.style.display = 'block';
+
+        fetch('/dialogflow', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'message bot';
+            responseDiv.innerHTML = data.message; // Menampilkan teks HTML dari server
+            chatBody.appendChild(responseDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Sembunyikan loader
+            loader.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+
+            // Sembunyikan loader
+            loader.style.display = 'none';
         });
+    }
+
+    document.getElementById('chat-input').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
 
     </script>
   
