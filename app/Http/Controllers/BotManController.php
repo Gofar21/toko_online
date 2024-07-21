@@ -122,7 +122,7 @@ class BotManController extends Controller
     public function test($input)
     {
         $credentialsPath = base_path('dialogflow-key.json');
-        $projectId  = 'hm-bot-mawi';
+        $projectId  = 'hm-bot-dxtm';
         $sessionId = '123456789';
         $text = $input;
 

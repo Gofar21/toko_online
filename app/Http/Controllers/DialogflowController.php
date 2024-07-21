@@ -14,7 +14,7 @@ use Google\Protobuf\ListValue;
 
 class DialogflowController extends Controller
 {
-    private $projectId = 'hm-bot-mawi'; // Ganti dengan ID proyek Dialogflow Anda
+    private $projectId = 'hm-bot-dxtm'; // Ganti dengan ID proyek Dialogflow Anda
     private $sessionId;
     private $sessionsClient;
 
