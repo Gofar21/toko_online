@@ -23,6 +23,7 @@
             <thead>
                 <tr>
                 <th class="product-thumbnail">Invoice</th>
+                <th class="product-tanggal">Tanggal</th>
                 <th class="product-name">Total</th>
                 <th class="product-price">Status</th>
                 <th class="product-quantity" width="20%">Aksi</th>
@@ -32,6 +33,7 @@
                 @foreach($order as $o)
                 <tr>
                     <td>{{ $o->invoice }}</td>
+                    <td>{{ $o->created_at }}</td>
                     <td>{{ $o->subtotal + $o->biaya_cod }}</td>
                     <td>{{ $o->name }}</td>
                     <td>
@@ -61,6 +63,7 @@
             <thead>
                 <tr>
                 <th class="product-thumbnail">Invoice</th>
+                <th class="product-tanggal">Tanggal</th>
                 <th class="product-name">Total</th>
                 <th class="product-price">Status</th>
                 <th class="product-quantity" width="20%">Aksi</th>
@@ -70,6 +73,7 @@
                 @foreach($dicek as $o)
                 <tr>
                     <td>{{ $o->invoice }}</td>
+                    <td>{{ $o->created_at}}</td>
                     <td>{{ $o->subtotal + $o->biaya_cod }}</td>
                     <td>
                         @if($o->name == 'Perlu Di Cek')
@@ -101,6 +105,7 @@
             <thead>
                 <tr>
                 <th class="product-thumbnail">Invoice</th>
+                <th class="product-tanggal">Tanggal</th>
                 <th class="product-name">Total</th>
                 <th class="product-price">Status</th>
                 <th class="product-quantity" width="20%">Aksi</th>
@@ -110,6 +115,7 @@
                 @foreach($histori as $o)
                 <tr>
                     <td>{{ $o->invoice }}</td>
+                    <td>{{ $o->created_at }}</td>
                     <td>{{ $o->subtotal + $o->biaya_cod }}</td>
                     <td>{{ $o->name }}</td>
                     <td>

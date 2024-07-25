@@ -69,7 +69,7 @@ class CheckoutController extends Controller
 
         //buat kode invoice sesua tanggalbulantahun dan jam
         return view('user.checkout', [
-            'invoice' => 'ALV' . Date('Ymdhi'),
+            'invoice' => 'HM' . Date('Ymdhi'),
             'keranjangs' => $carts,
             'ongkir' => $ongkir,
             'alamat' => $alamat_user,

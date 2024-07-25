@@ -110,7 +110,7 @@ class DialogflowController extends Controller
 
         $textInput = new TextInput();
         $textInput->setText($text);
-        $textInput->setLanguageCode('en');
+        $textInput->setLanguageCode('id');
 
         $queryInput = new QueryInput();
         $queryInput->setText($textInput);

@@ -296,12 +296,13 @@
       </button>
       <div id="chat-widget">
           <div id="chat-header">
-            <span>Chat with Us</span>
+            <span>HM-Bot</span>
             <button onclick="toggleChat()" style="background: transparent; border: none; color: #fff; font-size: 18px;">X</button>
           </div>
           <div id="chat-body">
             <div class="message bot">
-              Selamat datang di chat kami! Silakan pilih salah satu tombol di bawah ini untuk memulai.
+              Selamat datang di HM Konveksi😊<br>Ada yang bisa kami bantu?
+              <br><br>Silahkan pilih opsi dibawah ini :
               <br>
               <button id="jawabanButton" class="jawabanButton" onclick="tanya('produk')">Produk</button>
               <button id="jawabanButton" class="jawabanButton" onclick="tanya('promo')">Promo</button>

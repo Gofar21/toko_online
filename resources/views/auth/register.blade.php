@@ -25,8 +25,9 @@
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
-                <div class="brand-logo">
-                  <img src="{{ asset('adminassets') }}/assets/images/logo.svg">
+                <div class="brand-logo d-flex align-items-center">
+                  <img src="{{ asset('adminassets') }}/assets/images/logo.png" class="me-2">
+                  <h2 class="mb-0">HM Konveksi</h2>
                 </div>
                 <h4>New here?</h4>
                 <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>

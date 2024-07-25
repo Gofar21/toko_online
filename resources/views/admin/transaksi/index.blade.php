@@ -31,6 +31,7 @@
                             <th>No Invoice</th>
                             <th>Pemesan</th>
                             <th>Subtotal</th>
+                            <th>Tanggal</th>
                             <th>Metodo Pembayaran</th>
                             <th>Status Pesanan</th>
                             <th width="15%">Aksi</th>
@@ -43,6 +44,7 @@
                                 <td>{{ $order->invoice }}</td>
                                 <td>{{ $order->nama_pemesan }}</td>
                                 <td>{{ $order->subtotal + $order->biaya_cod }}</td>
+                                <td>{{ $order->created_at}}</td>
                                 <td>{{ $order->metode_pembayaran }}</td>
                                 <td>{{ $order->name }}</td>
                                 <td align="center">

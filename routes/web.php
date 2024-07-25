@@ -31,6 +31,11 @@ Route::get('/pelanggan',function(){
 
 Route::group(['middleware' => ['auth','checkRole:admin']],function(){    
     Route::get('/admin','DashboardController@index')->name('admin.dashboard');
+
+    Route::post('/admin/filter-questions', 'DashboardController@filterQuestions')->name('admin.filterQuestions');
+    Route::get('/admin/export-pdf', 'DashboardController@exportPdf')->name('admin.exportPdf');
+
+
     Route::get('/pengaturan/alamat','admin\PengaturanController@aturalamat')->name('admin.pengaturan.alamat');
     Route::get('/pengaturan/ubahalamat/{id}','admin\PengaturanController@ubahalamat')->name('admin.pengaturan.ubahalamat');
     Route::get('/pengaturan/alamat/getcity/{id}','admin\PengaturanController@getCity')->name('admin.pengaturan.getCity');

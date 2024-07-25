@@ -70,26 +70,25 @@ class ProductController extends Controller
 
     public function edit(Product $id)
     {
-        //menampilkan form edit
-        //dan mengambil data produk sesuai id dari parameter
+        $product = Product::with('variants')->find($id->id);
 
         return view('admin.product.edit', [
-            'product'       => $id,
-            'categories'    => Categories::all(),
+            'product' => $product,
+            'categories' => Categories::all(),
+            'variants' => $product->variants
         ]);
     }
 
     public function update(Product $id, Request $request)
     {
         $prod = $id;
-
+    
         if ($request->file('image')) {
-
             Storage::delete('public/' . $prod->image);
             $file = $request->file('image')->store('imageproduct', 'public');
             $prod->image = $file;
         }
-
+    
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
@@ -97,12 +96,52 @@ class ProductController extends Controller
         $prod->categories_id = $request->categories_id;
         $prod->stok = $request->stok;
         $prod->promo = $request->promo;
-
-
         $prod->save();
-
-        return redirect()->route('admin.product')->with('status', 'Berhasil Mengubah Kategori');
+    
+        // Update Variants
+        if ($request->has('variants')) {
+            foreach ($request->variants as $variant) {
+                if (isset($variant['id'])) {
+                    // Update existing variant
+                    $existingVariant = Variant::find($variant['id']);
+                    if ($existingVariant) {
+                        if (isset($variant['delete']) && $variant['delete'] == 'true') {
+                            // Delete variant
+                            Storage::delete('public/' . $existingVariant->gambar);
+                            $existingVariant->delete();
+                        } else {
+                            $existingVariant->ukuran = $variant['ukuran'];
+                            $existingVariant->warna = $variant['warna'];
+    
+                            if (isset($variant['gambar'])) {
+                                Storage::delete('public/' . $existingVariant->gambar);
+                                $file = $variant['gambar']->store('imagevariant', 'public');
+                                $existingVariant->gambar = $file;
+                            }
+    
+                            $existingVariant->save();
+                        }
+                    }
+                } else {
+                    // Create new variant
+                    $newVariant = new Variant();
+                    $newVariant->produk_id = $prod->id;
+                    $newVariant->ukuran = $variant['ukuran'];
+                    $newVariant->warna = $variant['warna'];
+    
+                    if (isset($variant['gambar'])) {
+                        $file = $variant['gambar']->store('imagevariant', 'public');
+                        $newVariant->gambar = $file;
+                    }
+    
+                    $newVariant->save();
+                }
+            }
+        }
+    
+        return redirect()->route('admin.product')->with('status', 'Berhasil Mengubah Produk');
     }
+    
 
     public function delete(Product $id)
     {

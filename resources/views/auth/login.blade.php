@@ -25,29 +25,28 @@
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
-                <div class="brand-logo">
-                  <img src="{{ asset('adminassets') }}/assets/images/logo.svg">
+                <div class="brand-logo d-flex align-items-center">
+                  <img src="{{ asset('adminassets') }}/assets/images/logo.png" class="me-2">
+                  <h2 class="mb-0">HM Konveksi</h2>
                 </div>
                 <h4>Halo! Selamat Datang</h4>
                 <h6 class="font-weight-light">Silahkan Login Untuk Melanjutkan.</h6>
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                   @csrf
                   <div class="form-group">
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
+                      <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
-                    </span>
+                      </span>
                     @enderror
                   </div>
                   <div class="form-group">
-                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
                     @enderror
                   </div>
                   <div class="mt-3">
@@ -64,6 +63,7 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
+    
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{ asset('adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>

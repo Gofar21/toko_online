@@ -66,11 +66,11 @@
                   </table>
                   <div class="form-group">
                     <label for="">Catatan</label>
-                    <textarea name="pesan" class="form-control"></textarea>
+                    <textarea name="pesan" class="form-control" placeholder="Silahkan isi detail alamat seperti jalan, gang, warna rumah, RT RW" required></textarea>
                   </div>
                   <div class="form-group">
                     <label for="">No telepon yang bisa dihubungi</label>
-                    <input type="text" name="no_hp" id="" class="form-control">
+                    <input type="text" name="no_hp" id="" class="form-control" required>
                   </div>
                   <input type="hidden" name="invoice" value="{{ $invoice }}">
                   <input type="hidden" name="subtotal" value="{{ $alltotal }}">
@@ -79,7 +79,7 @@
                   <label for="">Pilih Metode Pembayaran</label>
                     <select name="metode_pembayaran" id="" class="form-control">
                       <option value="trf">Transfer</option>
-                      <option value="cod">Cod</option>
+                      {{-- <option value="cod">Cod</option> --}}
                     </select>
                     <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp. 10.000,00</small>
                   </div>
