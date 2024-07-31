@@ -207,7 +207,7 @@
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="{{ route('user.alamat') }}">Pengaturan Alamat</a>
-                                  <a class="dropdown-item" href="#">Pengaturan Akun</a>
+                                  {{-- <a class="dropdown-item" href="#">Pengaturan Akun</a> --}}
                                   <a class="dropdown-item" href="#">
                                   
                                   <a class="dropdown-item" href="{{ route('logout') }}"
@@ -355,9 +355,9 @@
               <div class="block-5 mb-5">
                 <h1 class="mb-4">Contact Info</h1>
                 <ul class="list-unstyled">
-                  <li class="address">Jalan sukses menuju dunia akhirat</li>
-                  <li class="phone"><a href="tel://23923929210">+62 3392 3929 210</a></li>
-                  <li class="email">sport@gmail.com</li>
+                  <li class="address">Jalan Welahan</li>
+                  <li class="phone"><a href="tel://089677591700">+62 3392 3929 210</a></li>
+                  <li class="email">abdulgofarm@gmail.com</li>
                 </ul>
               </div>
 

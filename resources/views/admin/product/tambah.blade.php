@@ -83,15 +83,15 @@
 												<div class="row">
 													<div class="col-4">
 														<label for="ukuran">Ukuran</label>
-														<input type="text" id="ukuran" class="form-control" name="ukuran[]">
+														<input type="text" id="ukuran" class="form-control" name="ukuran[]"required>
 													</div>
 													<div class="col-4">
 														<label for="warna">Warna</label>
-														<input type="text" id="warna" class="form-control" name="warna[]">
+														<input type="text" id="warna" class="form-control" name="warna[]" required>
 													</div>
 													<div class="col-4">
 														<label for="gambarVariant">Gambar</label>
-														<input type="file" id="gambarVariant" class="form-control" name="gambarVariant[]">
+														<input type="file" id="gambarVariant" class="form-control" name="gambarVariant[]" required>
 													</div>
 												</div>
 											</div>

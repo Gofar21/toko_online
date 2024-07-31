@@ -36,6 +36,11 @@
                             <td  class="p-2">{{ $order->invoice }}</td>
                         </tr>
                         <tr>
+                            <td>Tanggal</td>
+                            <td>:</td>
+                            <td  class="p-2">{{ $order->created_at }}</td>
+                        </tr>
+                        <tr>
                             <td>Metode Pembayaran</td>
                             <td>:</td>
                             <td  class="p-2">{{ $order->metode_pembayaran }}</td>

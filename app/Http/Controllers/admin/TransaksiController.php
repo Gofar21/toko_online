@@ -119,7 +119,7 @@ class TransaksiController extends Controller
             'no_resi' => $randomCode
         ]);
 
-        $order = Detailorder::where('order_id', $id)->get();
+        $order = Detailorder::where('order_id', $id->id)->get();
 
         foreach ($order as $item) {
             Product::where('id', $item->product_id)->decrement('stok', $item->qty);
@@ -138,4 +138,20 @@ class TransaksiController extends Controller
 
         return redirect()->route('admin.transaksi.perludikirim')->with('status', 'Berhasil Menginput No Resi');
     }
+
+    public function index_(Request $request)
+{
+    $query = Order::query();
+
+    if ($request->has('start_date') && $request->has('end_date')) {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $query->whereBetween('created_at', [$startDate, $endDate]);
+    }
+
+    $order_baru = $query->orderBy('created_at', 'desc')->take(10)->get();
+
+    return view('admin.transaksi.index_', compact('order_baru'));
+}
+
 }

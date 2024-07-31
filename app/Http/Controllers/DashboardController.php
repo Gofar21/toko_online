@@ -31,8 +31,10 @@ class DashboardController extends Controller
         $order_terbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
             ->join('users', 'users.id', '=', 'order.user_id')
             ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
-            ->limit(10)
-            ->get();
+            ->orderBy('order.created_at', 'desc')
+            ->paginate(10);
+
+        
         $questionsCount = Pertanyaan::select('text_input', DB::raw('count(*) as count'))
             ->where('created_at', '>=', Carbon::now()->subMonth())
             ->groupBy('text_input')
@@ -78,6 +80,7 @@ class DashboardController extends Controller
 
         return response()->json($questionsCount);
     }
+    
 
     public function exportPdf()
     {
@@ -125,4 +128,5 @@ class DashboardController extends Controller
 
         return $pdf->download('dashboard.pdf');
     }
+
 }

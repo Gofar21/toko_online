@@ -62,43 +62,62 @@
               </div>
               <canvas id="questionsChart"></canvas>
             </div>
-            <div class="container mt-5">
+            {{-- <div class="container mt-5">
               <h2>Data Persentase</h2>
               <canvas id="percentageChart"></canvas>
-          </div>
-            <div class="row">
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">10 Transaksi Terbaru</h4>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th> Invoice </th>
-                            <th> Pemesan </th>
-                            <th> Subtotal </th>
-                            <th> Status Pesanan </th>
-                            <th> Aksi </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach($order_baru as $order)
-                            <tr>
-                              <td>{{ $order->invoice }}</td>
-                              <td>{{ $order->nama_pemesan }}</td>
-                              <td>{{ $order->subtotal + $order->biaya_cod }}</td>
-                              <td>{{ $order->name }}</td>
-                              <td> <a href="{{ route('admin.transaksi.detail',['id'=>$order->id]) }}" class="btn btn-warning btn-sm">Detail</a></td>
-                            </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
+          </div> --}}
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Semua Trensaksi</h4>
+                  {{-- <form method="GET" action="{{ route('admin.transaksi') }}">
+                    <div class="form-group row">
+                      <label for="start_date" class="col-sm-2 col-form-label">Mulai Tanggal</label>
+                      <div class="col-sm-3">
+                        <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request('start_date') }}">
+                      </div>
+                      <label for="end_date" class="col-sm-2 col-form-label">Sampai Tanggal</label>
+                      <div class="col-sm-3">
+                        <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request('end_date') }}">
+                      </div>
+                      <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                      </div>
                     </div>
+                  </form> --}}
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> Invoice </th>
+                          <th> Tanggal </th>
+                          <th> Pemesan </th>
+                          <th> Subtotal </th>
+                          <th> Status Pesanan </th>
+                          <th> Aksi </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($order_baru as $order)
+                          <tr>
+                            <td>{{ $order->invoice }}</td>
+                            <td>{{ $order->created_at }}</td>
+                            <td>{{ $order->nama_pemesan }}</td>
+                            <td>{{ $order->subtotal + $order->biaya_cod }}</td>
+                            <td>{{ $order->name }}</td>
+                            <td> <a href="{{ route('admin.transaksi.detail',['id'=>$order->id]) }}" class="btn btn-warning btn-sm">Detail</a></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                    {{ $order_baru->links() }}
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          
           </div>
 
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

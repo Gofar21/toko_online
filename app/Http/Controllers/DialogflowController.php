@@ -75,7 +75,20 @@ class DialogflowController extends Controller
                             $botResponses = [];
                             foreach ($options as $option) {
                                 $pesan = preg_replace('/^\d+\.\s*/', '', $option['text']);
-                                $botResponses[] = '<button type="button" onclick="tanya(\'' . $pesan . '\')" id="jawabanButton">' . htmlspecialchars($option['text']) . '</button>';
+                                $botResponses[] = '<div style="display: flex; flex-direction: column; align-items: left; margin-bottom: 10px;">';
+                                if(isset($option['img'])){
+                                    $botResponses[] = '<a href="'.$option['url'].'" target="_blank">';
+                                    $botResponses[] = '<img style="width:100px; margin-bottom: 10px;" src="'.$option['img'].'">';
+                                    $botResponses[] = '</a>';
+                                    $botResponses[] = '<a href="' . $option['url'] . '" target="_blank" class="btn btn-success">' . htmlspecialchars($option['text']) . '</a>';
+                                    $botResponses[] = '</div>';
+                                }elseif(isset($option['des'])){
+                                    $botResponses[] = '<p>' . htmlspecialchars($option['des']) . '</p>';
+                                    $botResponses[] = '<a href="' . $option['url'] . '" target="_blank" class="btn btn-success">' . htmlspecialchars($option['text']) . '</a>';
+                                }else{
+                                    $botResponses[] = '<button type="button" onclick="tanya(\'' . $pesan . '\')" id="jawabanButton">' . htmlspecialchars($option['text']) . '</button>';
+                                    $botResponses[] = '</div>';
+                                }
                             }
                             return $this->reply(implode(' ', $botResponses));
                             $isPayloadProcessed = true;
