@@ -29,11 +29,15 @@ class ProdukController extends Controller
     {
         //mengambil detail produk
         $variant = Variant::where('produk_id', $id)->get();
-        // var_dump($variant);
+        $produk = Product::where('id', $id)->get();
+        $kategori = Categories::where('id', $produk[0]->categories_id)->get();
+        $nama_kategori = $kategori[0]->name;
+        // var_dump($kategori[0]->name);
         // die();
         return view('user.produkdetail', [
             'produk' => Product::findOrFail($id),
-            'variants' => $variant
+            'variants' => $variant,
+            'nama_kategori' => $nama_kategori
         ]);
     }
 
