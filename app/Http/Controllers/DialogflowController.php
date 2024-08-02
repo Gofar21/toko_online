@@ -29,7 +29,12 @@ class DialogflowController extends Controller
     public function handle(Request $request)
     {
         $message = $request->input('message');
-        $userId = Auth::user()->id;
+        // $userId = Auth::user()->id;
+        if (Auth::check()) { // Memeriksa apakah pengguna sudah diotentikasi
+            $userId = Auth::user()->id; // Mengambil ID pengguna yang diotentikasi
+        } else {
+            $userId = null;
+        }
         // Check if message is provided
         if (empty($message)) {
             return response()->json(['error' => 'Message is required'], 400);
@@ -50,7 +55,7 @@ class DialogflowController extends Controller
         // }
 
         // Serialisasi array menjadi string JSON
-        $fulfillmentMessagesJson = json_encode($fulfillmentMessages);
+        $fulfillmentMessagesJson = json_encode($fulfillmentMessages); // Fulfillment messages diserialisasi menjadi string JSON untuk disimpan dalam database.
 
         Pertanyaan::create([
             'text_payload' => $fulfillmentMessagesJson,

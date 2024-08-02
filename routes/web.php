@@ -98,11 +98,11 @@ Route::group(['middleware' => ['auth','checkRole:customer']],function(){
     Route::get('/order/pembayaran/{id}','user\OrderController@pembayaran')->name('user.order.pembayaran');
     Route::post('/order/kirimbukti/{id}','user\OrderController@kirimbukti')->name('user.order.kirimbukti');
 
-    Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+    
+});
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 Route::get('/dialogflow/{id}','BotManController@test');
 Route::get('/hallo/{id}','BotManController@hallo');
-});
-
 Route::post('/dialogflow', [DialogflowController::class, 'handle']);
 
 Route::get('/ongkir', 'OngkirController@index');

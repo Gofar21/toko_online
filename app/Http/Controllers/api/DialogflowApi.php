@@ -17,7 +17,7 @@ class DialogflowApi extends Controller
         $projectId= $request->projectId;
         $text= $request->text;
         $sessionId= $request->sessionId;
-        $languageCode = 'en-US';
+        $languageCode = 'id';
 
 
         // echo $sessionId; die();

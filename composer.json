@@ -12,6 +12,7 @@
         "barryvdh/laravel-dompdf": "^2.2",
         "botman/botman": "^2.7",
         "botman/driver-web": "^1.5",
+        "doctrine/dbal": "^2.13",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "google/cloud-dialogflow": "^1.3",

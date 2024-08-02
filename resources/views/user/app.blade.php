@@ -299,6 +299,8 @@
             <span>HM-Bot</span>
             <button onclick="toggleChat()" style="background: transparent; border: none; color: #fff; font-size: 18px;">X</button>
           </div>
+
+          {{-- view char --}}
           <div id="chat-body">
             <div class="message bot">
               Selamat datang di HM Konveksi😊<br>Ada yang bisa kami bantu?
