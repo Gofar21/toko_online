@@ -56,7 +56,7 @@
             <div class="block-4 text-center border">
                 <a href="{{ route('user.produk.detail',['id' =>  $produk->id]) }}">
                     <?php if($produk->promo == 1){?>
-                        <img src="{{ asset('shopper') }}/images/diskon.png " class="imgpromo">
+                        <img src="{{ asset('public/shopper') }}/images/diskon.png " class="imgpromo">
                     <?php } ?>
                     <img src="{{ asset('storage/' . $produk->image) }}" alt="Image placeholder" class="img-fluid" width="100%" style="height:200px">
                 </a>
