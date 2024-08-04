@@ -6,17 +6,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Sport Center</title>
 		<!-- plugins:css -->
-		<link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
-		<link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/css/vendor.bundle.base.css">
+		<link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
+		<link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/vendors/css/vendor.bundle.base.css">
 		<!-- endinject -->
 		<!-- Plugin css for this page -->
 		<!-- End plugin css for this page -->
 		<!-- inject:css -->
 		<!-- endinject -->
 		<!-- Layout styles -->
-		<link rel="stylesheet" href="{{ asset('adminassets') }}/assets/css/style.css">
+		<link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/css/style.css">
 		<link href="{{ asset('swal/dist/sweetalert2.min.css') }}" rel="stylesheet">
-		<link rel="shortcut icon" href="{{ asset('adminassets') }}/assets/images/favicon.png" />
+		<link rel="shortcut icon" href="{{ asset('public/adminassets') }}/assets/images/favicon.png" />
 		<link href="{{ asset('table/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 		<script src="https://cdn.tailwindcss.com"></script>
@@ -26,9 +26,9 @@
 			<!-- partial:partials/_navbar.html -->
 			<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-					<img class="logo w-20" src="{{ asset('shopper') }}/images/logo.png">
-					{{-- <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('adminassets') }}/assets/images/logo.svg" alt="logo" /></a> --}}
-					<a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('adminassets') }}/assets/images/logo-mini.svg" alt="logo" /></a>
+					<img class="logo w-20" src="{{ asset('public/shopper') }}/images/logo.png">
+					{{-- <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('public/adminassets') }}/assets/images/logo.svg" alt="logo" /></a> --}}
+					<a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('public/adminassets') }}/assets/images/logo-mini.svg" alt="logo" /></a>
 				</div>
 				<div class="navbar-menu-wrapper d-flex align-items-stretch">
 					<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -38,7 +38,7 @@
 						<li class="nav-item nav-profile dropdown">
 							<a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 								<div class="nav-profile-img">
-									<img src="{{ asset('adminassets') }}/assets/images/faces/face1.jpg" alt="image">
+									<img src="{{ asset('public/adminassets') }}/assets/images/faces/face1.jpg" alt="image">
 									<span class="availability-status online"></span>
 								</div>
 								<div class="nav-profile-text">
@@ -73,7 +73,7 @@
 						<li class="nav-item nav-profile">
 							<a href="#" class="nav-link">
 								<div class="nav-profile-image">
-									<img src="{{ asset('adminassets') }}/assets/images/faces/face1.jpg" alt="profile">
+									<img src="{{ asset('public/adminassets') }}/assets/images/faces/face1.jpg" alt="profile">
 									<span class="login-status online"></span>
 									<!--change to offline or busy as needed-->
 								</div>
@@ -161,19 +161,19 @@
 	 
 		<!-- container-scroller -->
 		<!-- plugins:js -->
-		<script src="{{ asset('adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>
 		<!-- endinject -->
 		<!-- Plugin js for this page -->
-		<script src="{{ asset('adminassets') }}/assets/vendors/chart.js/Chart.min.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/vendors/chart.js/Chart.min.js"></script>
 		<!-- End plugin js for this page -->
 		<!-- inject:js -->
-		<script src="{{ asset('adminassets') }}/assets/js/off-canvas.js"></script>
-		<script src="{{ asset('adminassets') }}/assets/js/hoverable-collapse.js"></script>
-		<script src="{{ asset('adminassets') }}/assets/js/misc.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/js/off-canvas.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/js/hoverable-collapse.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/js/misc.js"></script>
 		<!-- endinject -->
 		<!-- Custom js for this page -->
-		<script src="{{ asset('adminassets') }}/assets/js/dashboard.js"></script>
-		<script src="{{ asset('adminassets') }}/assets/js/todolist.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/js/dashboard.js"></script>
+		<script src="{{ asset('public/adminassets') }}/assets/js/todolist.js"></script>
 		<!-- <script src="{{ asset('table/jquery/jquery.min.js') }}"></script>
 		<script src="{{ asset('table/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
 
