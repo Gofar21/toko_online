@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Purple Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('adminassets') }}/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('public/adminassets') }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('adminassets') }}/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('public/adminassets') }}/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ asset('adminassets') }}/assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -26,7 +26,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo d-flex align-items-center">
-                  <img src="{{ asset('public/adminassets') }}/assets/images/logo.png" class="me-2">
+                  <img src="{{ asset('adminassets') }}/assets/images/logo.png" class="me-2">
                   <h2 class="mb-0">HM Konveksi</h2>
                 </div>
                 <h4>Halo! Selamat Datang</h4>
@@ -66,14 +66,14 @@
     
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('public/adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{ asset('adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ asset('public/adminassets') }}/assets/js/off-canvas.js"></script>
-    <script src="{{ asset('public/adminassets') }}/assets/js/hoverable-collapse.js"></script>
-    <script src="{{ asset('public/adminassets') }}/assets/js/misc.js"></script>
+    <script src="{{ asset('adminassets') }}/assets/js/off-canvas.js"></script>
+    <script src="{{ asset('adminassets') }}/assets/js/hoverable-collapse.js"></script>
+    <script src="{{ asset('adminassets') }}/assets/js/misc.js"></script>
     <!-- endinject -->
   </body>
 </html>

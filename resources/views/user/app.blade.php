@@ -7,18 +7,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/jquery-ui.css">
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/owl.theme.default.min.css">
 
 
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/aos.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/aos.css">
 
-    <link rel="stylesheet" href="{{ asset('public/shopper') }}/css/style.css">
+    <link rel="stylesheet" href="{{ asset('shopper') }}/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
     <style>
@@ -189,7 +189,7 @@
               <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                 <div class="">
                   <a href="{{ route('home') }}" class="js-logo-clone">
-                    <img class="logo" src="{{ asset('public/shopper') }}/images/logo.png">
+                    <img class="logo" src="{{ asset('shopper') }}/images/logo.png">
                   </a>
                 </div>
               </div>
@@ -372,17 +372,17 @@
 
 
     </div>
-    <script src="{{ asset('public/shopper') }}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('shopper') }}/js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/jquery-ui.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/popper.min.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/owl.carousel.min.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('public/shopper') }}/js/aos.js"></script>
+    <script src="{{ asset('shopper') }}/js/jquery-ui.js"></script>
+    <script src="{{ asset('shopper') }}/js/popper.min.js"></script>
+    <script src="{{ asset('shopper') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('shopper') }}/js/owl.carousel.min.js"></script>
+    <script src="{{ asset('shopper') }}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('shopper') }}/js/aos.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
-    <script src="{{ asset('public/shopper') }}/js/main.js"></script>
+    <script src="{{ asset('shopper') }}/js/main.js"></script>
     {{-- <script>
       var botmanWidget = {
         introMessage: "Selamat datang di HM Konveksi😊<br>Ada yang bisa kami bantu?",
